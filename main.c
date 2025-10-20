@@ -67,7 +67,6 @@ int main() {
         printf("\nPress 1 and ENTER to end or just ENTER to continue\n");
         exitE=getch();
     } while (exitE != '1');
-
     return 0;
 }
 
