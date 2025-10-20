@@ -18,7 +18,7 @@ int main() {
     printf("You need enter: x1(start value), x2(final value), Dx(step) and E(precision).\n");
     printf("MAX input for x1, x2 and Dx = 1000\n");
     printf("MIN input for x1, x2 and Dx = -1000\n");
-    printf("You can put ONLY 3 numbers after point!\n");
+    printf("You can put ONLY 6 numbers after point!\n");
 
     do {
         float x1 = isItValid("x1 (degrees):", -1000.f,1000.f, true);
