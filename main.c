@@ -5,7 +5,7 @@
 #define PI 3.14159265f
 
 
-float isItValid(char parametr[], float min, float max, bool checkRange);
+float isItValid(char textOutput[], float min, float max, bool checkRange);
 bool validationNumbersAfterPoint(float x);
 float degreesToRadians(float degree);
 float taylorCos(float x, float epsilon);
@@ -16,14 +16,11 @@ int main() {
 
     printf("This program calculates cos(t) using Taylor series and comparing it with normal cos(x).\n");
     printf("You need enter: x1(start value), x2(final value), Dx(step) and E(precision).\n");
-    printf("MAX input for x1, x2 and Dx = 1000\n");
-    printf("MIN input for x1, x2 and Dx = -1000\n");
-    printf("You can put ONLY 3 numbers after point!\n");
 
     do {
-        float x1 = isItValid("x1 (degrees):", -1000.f,1000.f, true);
-        float x2 = isItValid("x2 (degrees):", -1000.f,1000.f, true);
-        float dx = isItValid("Dx (degrees):", -1000.f,1000.f, true);
+        float x1 = isItValid("x1 (Max = 1000; Min = -1000; degrees):", -1000.f,1000.f, true);
+        float x2 = isItValid("x2 (Max = 1000; Min = -1000; degrees):", -1000.f,1000.f, true);
+        float dx = isItValid("Dx (Max = 1000; Min = -1000; degrees):", -1000.f,1000.f, true);
         float epsilon = isItValid("E (ONLY 3 numbers after point): ", 1e-5f,1.f, false);
 
 
@@ -98,12 +95,12 @@ int correctCalculationForX1X2(float x, float epsilon) {
 }
 
 
-float isItValid(char parametr[], float min, float max, bool checkRange) {
+float isItValid(char textOutput[], float min, float max, bool checkRange) {
     float number = 0.f;
     char extra = 0;
     int validInput = 1;
     do {
-        printf("\n%s", parametr);
+        printf("\n%s", textOutput);
         float result = scanf(" %10f%c", &number, &extra);
 
         if (result !=2 || extra != '\n') {
