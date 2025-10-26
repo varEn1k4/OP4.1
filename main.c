@@ -21,7 +21,7 @@ int main() {
         float x1 = isItValid("x1 (Max = 1000; Min = -1000; degrees):", -1000.f,1000.f, true);
         float x2 = isItValid("x2 (Max = 1000; Min = -1000; degrees):", -1000.f,1000.f, true);
         float dx = isItValid("Dx (Max = 1000; Min = -1000; degrees):", -1000.f,1000.f, true);
-        float epsilon = isItValid("E (ONLY 3 numbers after point): ", 1e-5f,1.f, false);
+        float epsilon = isItValid("E (ONLY 5 numbers after point): ", 1e-5f,1.f, false);
 
 
         if (x1 == x2 && dx != 0) {
@@ -45,7 +45,7 @@ int main() {
         }
 
         printf("\n");
-        printf("|       x      |    cos(t)    |    cos(x)    | cos(t)-cos(x)|\n");
+        printf("|       x      |    cos(t)    |    cos(x)    |  Difference  |\n");
         printf("|______________|______________|______________|______________|\n");
 
         if (dx == 0) {
@@ -89,7 +89,7 @@ int correctCalculationForX1X2(float x, float epsilon) {
     float xInRad = degreesToRadians(x);
     float taylor = taylorCos(xInRad, epsilon);
     float standard = cosf(xInRad);
-    float difference = taylor - standard;
+    float difference = fabsf(taylor - standard);
 
     return printf("| %12.5f | %12.5f | %12.5f | %12.5f |\n", x, taylor, standard, difference);
 }
@@ -101,7 +101,7 @@ float isItValid(char textOutput[], float min, float max, bool checkRange) {
     int validInput = 1;
     do {
         printf("\n%s", textOutput);
-        float result = scanf(" %10f%c", &number, &extra);
+        unsigned short int result = scanf(" %10f%c", &number, &extra);
 
         if (result !=2 || extra != '\n') {
             printf("ERROR: Invalid input. Please enter ONLY a number\n");
