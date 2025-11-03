@@ -95,7 +95,6 @@ float taylorCos(float x, float epsilon) {
     return sum;
 }
 
-
 void correctCalculationForX1X2(float x, float epsilon) {
     float xInRad = degreesToRadians(x);
     float taylor = taylorCos(xInRad, epsilon);
@@ -104,14 +103,13 @@ void correctCalculationForX1X2(float x, float epsilon) {
     printf("| %12.5f | %12.5f | %12.5f | %12.5f |\n", x, taylor, standard, difference);
 }
 
-
 float isItValid(char textOutput[], float min, float max, bool checkRange) {
     float number = 0.f;
     char extra = 0;
     int validInput = 1;
     do {
         printf("\n%s", textOutput);
-        unsigned result = scanf(" %11f%c", &number, &extra);
+        unsigned short result = scanf(" %11f%c", &number, &extra);
 
         if (result !=2 || extra != '\n') {
             printf("ERROR: Invalid input. Please enter ONLY a number\n");
